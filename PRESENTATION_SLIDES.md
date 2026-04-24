@@ -19,8 +19,12 @@
 - **Course:** COMP1073 - Introduction to Computer Science
 - **Date:** April 27, 2026
 
-### Canva AI Prompt:
-"Create a modern, professional title slide with a purple gradient background. Include the title 'Sentiment Analysis & Trend Prediction System' in large white text, subtitle 'Threads Social Media Platform' in smaller text, team names and course info at the bottom. Add subtle social media icons (threads logo, AI brain icon) in the corners. Use clean, modern typography."
+### Bullet Points:
+- **Project Title:** Sentiment Analysis & Trend Prediction System
+- **Platform:** Threads Social Media App
+- **Team:** 3 Computer Science + 2 Communications/Media Students
+- **Course:** COMP1073 - Introduction to Computer Science
+- **Date:** April 27, 2026
 
 ---
 
@@ -35,9 +39,6 @@
 - **Current Methods:** Time-consuming, subjective, incomplete
 - **Our Solution:** AI-powered automated sentiment analysis and prediction
 
-### Canva AI Prompt:
-"Create a problem-solution slide with a split design. Left side shows a confused person surrounded by piles of paper (representing reviews), right side shows a clean dashboard with graphs and AI icons. Use red tones for the problem side, green for the solution. Include the question 'How do we analyze 36,943 reviews?' prominently."
-
 ---
 
 ## Slide 3: System Overview
@@ -51,9 +52,6 @@
 - **Output:** Sentiment scores, trend graphs, future predictions
 - **Technology:** Python, Flask, scikit-learn, TF-IDF, Logistic Regression
 - **Architecture:** Modular design with separate components for each step
-
-### Canva AI Prompt:
-"Create a flowchart-style slide showing the system architecture. Use a horizontal flow from left to right: Raw Data → Cleaning → Preprocessing → AI Model → Results. Include icons for each step (database, cleaning brush, gears, brain, charts). Use blue and purple color scheme with connecting arrows."
 
 ---
 
@@ -72,9 +70,6 @@
   - 3 stars: 8% (neutral opinions)
 - **Key Insight:** Highly polarized user base
 
-### Canva AI Prompt:
-"Create a data visualization slide with a large bar chart showing rating distribution (1-5 stars). Use purple bars, include percentage labels on each bar. Add a world map highlighting the US. Include key statistics in text boxes. Use a clean, data-focused design with subtle background pattern."
-
 ---
 
 ## Slide 5: Data Cleaning Process
@@ -88,9 +83,6 @@
 - **Step 3:** Combine title + description into single text field
 - **Step 4:** Text normalization (lowercase, remove URLs, special characters)
 - **Result:** Clean, standardized text ready for AI analysis
-
-### Canva AI Prompt:
-"Create a step-by-step process slide with 4 circular icons connected by arrows. Each circle represents a cleaning step with a simple icon (trash can for removal, merge icon for combining, brush for cleaning, checkmark for result). Use green-to-blue gradient background. Include brief descriptions under each step."
 
 ---
 
@@ -107,9 +99,6 @@
 - **Performance:** 79% accuracy, 63% precision for neutral class
 - **Model Size:** 2.1 MB (efficient for deployment)
 
-### Canva AI Prompt:
-"Create a technical architecture slide with a central 'brain' icon representing the AI model. Show input (text reviews) flowing into TF-IDF vectorization, then into the logistic regression model, outputting sentiment predictions. Include accuracy metrics in floating text boxes. Use tech-inspired colors (blues, greens) with circuit board pattern background."
-
 ---
 
 ## Slide 7: Sentiment Classification Results
@@ -124,9 +113,6 @@
 - **Neutral Reviews:** 63% precision, 32% recall (challenging category)
 - **Business Impact:** Reliable for identifying satisfied/dissatisfied users
 - **Model Confidence:** Provides probability scores for each prediction
-
-### Canva AI Prompt:
-"Create a results slide with three colored bars (green for positive, red for negative, yellow for neutral) showing precision and recall metrics. Include a large '79%' accuracy badge. Add icons for each sentiment type (smiley face, sad face, neutral face). Use a clean, metric-focused design with subtle grid background."
 
 ---
 
@@ -144,9 +130,6 @@
   - Change: -8.6%
 - **Prediction Method:** Linear regression on daily averages
 - **Business Insight:** Early adopter enthusiasm vs. long-term satisfaction
-
-### Canva AI Prompt:
-"Create a trend visualization slide with a line graph showing declining sentiment over time (July to August). Use purple line with data points. Include trend arrow pointing downward. Add key statistics in callout boxes. Background should be subtle grid with time markers. Include calendar icons for date range."
 
 ---
 
@@ -167,9 +150,6 @@
 - **User Experience:** Simple, intuitive interface
 - **Technical Backend:** Flask API with trained ML model
 
-### Canva AI Prompt:
-"Create a demonstration slide with a mockup of the web interface (show the purple gradient design, input box, and result display). Include a 'LIVE DEMO' badge and arrow pointing to browser window. Add screenshots of the interface. Use action-oriented design with call-to-action styling."
-
 ---
 
 ## Slide 10: Business Insights
@@ -187,9 +167,6 @@
   - Add missing features quickly
   - Monitor sentiment trends weekly
 - **Market Impact:** Early indicator of platform adoption challenges
-
-### Canva AI Prompt:
-"Create an insights slide with business-focused icons (lightbulb, chart, target). Use a split design: left side shows problems (red), right side shows solutions (green). Include key metrics and recommendations in bullet points. Add business-themed background with subtle dollar signs and graphs."
 
 ---
 
@@ -209,9 +186,6 @@
 - **Performance:** Processes 36,943 reviews in under 3 minutes
 - **Scalability:** Can handle larger datasets with same architecture
 
-### Canva AI Prompt:
-"Create a technical slide with code-like elements. Show icons for Python, Flask, scikit-learn. Include a simplified code snippet in a code block style. Use developer-friendly colors (dark background with colored syntax highlighting). Add gear icons and technical diagrams."
-
 ---
 
 ## Slide 12: Challenges and Solutions
@@ -229,9 +203,6 @@
 - **Challenge 4:** Team coordination (CS + Media students)
   - **Solution:** Clear task division and regular meetings
 
-### Canva AI Prompt:
-"Create a challenges-solutions slide with a balance scale design. Left side shows challenges (red warning icons), right side shows solutions (green checkmark icons). Connect each challenge to its solution with arrows. Use a problem-solving theme with lightbulb icons and 'VS' divider."
-
 ---
 
 ## Slide 13: Ethical Considerations
@@ -246,9 +217,6 @@
 - **Limitations:** AI should supplement, not replace, human judgment
 - **Responsible Use:** Designed for genuine business insights, not manipulation
 
-### Canva AI Prompt:
-"Create an ethics slide with balanced scales and ethical icons (shield, eye, balance). Use thoughtful colors (blues and greens). Include key ethical principles as bullet points. Add a subtle background pattern suggesting responsibility and transparency."
-
 ---
 
 ## Slide 14: Future Improvements
@@ -262,9 +230,6 @@
 - **Long-term:** Advanced models (BERT, LSTM), social media API integration
 - **Scalability:** Handle millions of reviews with distributed processing
 - **User Experience:** Mobile app, API for third-party integration
-
-### Canva AI Prompt:
-"Create a future vision slide with a timeline design. Show current state, near future, and long-term goals with icons. Use upward arrows and growth symbols. Include innovation-themed elements like rockets and lightbulbs. Background should suggest progress and expansion."
 
 ---
 
@@ -286,9 +251,6 @@
   - Cross-disciplinary collaboration
 - **Impact:** Practical AI solution for real business needs
 
-### Canva AI Prompt:
-"Create a conclusion slide with a summary infographic. Show key metrics (79% accuracy, 36,943 reviews) in large badges. Include team photo or icons. Use celebratory colors (gold, blue) with checkmark icons. Add a call-to-action for questions."
-
 ---
 
 ## Slide 16: Q&A
@@ -306,9 +268,6 @@
 - **Contact Information:**
   - GitHub: https://github.com/markodesu/sentiment-analysis
   - Live Demo: [Insert deployment URL]
-
-### Canva AI Prompt:
-"Create a Q&A slide with question mark icons and open discussion symbols. Include contact information prominently. Use an inviting, conversational design with speech bubbles and microphone icons. Background should be warm and welcoming."
 
 ---
 
@@ -370,3 +329,41 @@
 
 ### Slide C: Alternative Demo
 *Link to video demonstration if live demo unavailable*
+
+---
+
+## Combined Canva AI Prompts
+
+**Copy and paste all these prompts at once into Canva's AI slide generator:**
+
+"Create a modern, professional title slide with a purple gradient background. Include the title 'Sentiment Analysis & Trend Prediction System' in large white text, subtitle 'Threads Social Media Platform' in smaller text, team names and course info at the bottom. Add subtle social media icons (threads logo, AI brain icon) in the corners. Use clean, modern typography."
+
+"Create a problem-solution slide with a split design. Left side shows a confused person surrounded by piles of paper (representing reviews), right side shows a clean dashboard with graphs and AI icons. Use red tones for the problem side, green for the solution. Include the question 'How do we analyze 36,943 reviews?' prominently."
+
+"Create a flowchart-style slide showing the system architecture. Use a horizontal flow from left to right: Raw Data → Cleaning → Preprocessing → AI Model → Results. Include icons for each step (database, cleaning brush, gears, brain, charts). Use blue and purple color scheme with connecting arrows."
+
+"Create a data visualization slide with a large bar chart showing rating distribution (1-5 stars). Use purple bars, include percentage labels on each bar. Add a world map highlighting the US. Include key statistics in text boxes. Use a clean, data-focused design with subtle background pattern."
+
+"Create a step-by-step process slide with 4 circular icons connected by arrows. Each circle represents a cleaning step with a simple icon (trash can for removal, merge icon for combining, brush for cleaning, checkmark for result). Use green-to-blue gradient background. Include brief descriptions under each step."
+
+"Create a technical architecture slide with a central 'brain' icon representing the AI model. Show input (text reviews) flowing into TF-IDF vectorization, then into the logistic regression model, outputting sentiment predictions. Include accuracy metrics in floating text boxes. Use tech-inspired colors (blues, greens) with circuit board pattern background."
+
+"Create a results slide with three colored bars (green for positive, red for negative, yellow for neutral) showing precision and recall metrics. Include a large '79%' accuracy badge. Add icons for each sentiment type (smiley face, sad face, neutral face). Use a clean, metric-focused design with subtle grid background."
+
+"Create a trend visualization slide with a line graph showing declining sentiment over time (July to August). Use purple line with data points. Include trend arrow pointing downward. Add key statistics in callout boxes. Background should be subtle grid with time markers. Include calendar icons for date range."
+
+"Create a demonstration slide with a mockup of the web interface (show the purple gradient design, input box, and result display). Include a 'LIVE DEMO' badge and arrow pointing to browser window. Add screenshots of the interface. Use action-oriented design with call-to-action styling."
+
+"Create an insights slide with business-focused icons (lightbulb, chart, target). Use a split design: left side shows problems (red), right side shows solutions (green). Include key metrics and recommendations in bullet points. Add business-themed background with subtle dollar signs and graphs."
+
+"Create a technical slide with code-like elements. Show icons for Python, Flask, scikit-learn. Include a simplified code snippet in a code block style. Use developer-friendly colors (dark background with colored syntax highlighting). Add gear icons and technical diagrams."
+
+"Create a challenges-solutions slide with a balance scale design. Left side shows challenges (red warning icons), right side shows solutions (green checkmark icons). Connect each challenge to its solution with arrows. Use a problem-solving theme with lightbulb icons and 'VS' divider."
+
+"Create an ethics slide with balanced scales and ethical icons (shield, eye, balance). Use thoughtful colors (blues and greens). Include key ethical principles as bullet points. Add a subtle background pattern suggesting responsibility and transparency."
+
+"Create a future vision slide with a timeline design. Show current state, near future, and long-term goals with icons. Use upward arrows and growth symbols. Include innovation-themed elements like rockets and lightbulbs. Background should suggest progress and expansion."
+
+"Create a conclusion slide with a summary infographic. Show key metrics (79% accuracy, 36,943 reviews) in large badges. Include team photo or icons. Use celebratory colors (gold, blue) with checkmark icons. Add a call-to-action for questions."
+
+"Create a Q&A slide with question mark icons and open discussion symbols. Include contact information prominently. Use an inviting, conversational design with speech bubbles and microphone icons. Background should be warm and welcoming."
