@@ -2,8 +2,12 @@ from flask import Flask, render_template, request, jsonify
 import joblib
 import os
 from src.preprocess import clean_text
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
+app.config['ENV'] = os.getenv('FLASK_ENV', 'development')
 
 # Load the trained model and vectorizer
 model_path = 'outputs/sentiment_model.pkl'
@@ -77,4 +81,6 @@ def predict():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    debug_mode = os.getenv('FLASK_ENV') == 'development'
+    port = int(os.getenv('PORT', 5000))
+    app.run(debug=debug_mode, host='0.0.0.0', port=port)
