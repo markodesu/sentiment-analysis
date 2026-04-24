@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threads Sentiment Analyzer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .emoji-large {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1em;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea::placeholder {
+            color: #aaa;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .analyze-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .analyze-btn:active {
+            transform: translateY(0);
+        }
+
+        .analyze-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .clear-btn {
+            background: #f5f5f5;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+
+        .clear-btn:hover {
+            background: #efefef;
+        }
+
+        .result-container {
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .result-container.show {
+            display: block;
+        }
+
+        .sentiment-result {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sentiment-emoji {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+
+        .sentiment-label {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .confidence-score {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .probabilities {
+            margin-top: 20px;
+        }
+
+        .probability-bar {
+            margin-bottom: 15px;
+        }
+
+        .probability-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .positive .progress-fill {
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+        }
+
+        .negative .progress-fill {
+            background: linear-gradient(90deg, #f44336, #da190b);
+        }
+
+        .neutral .progress-fill {
+            background: linear-gradient(90deg, #FF9800, #e68900);
+        }
+
+        .cleaned-text {
+            background: white;
+            border-left: 4px solid #667eea;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #555;
+            font-style: italic;
+        }
+
+        .cleaned-text-label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        .loading {
+            text-align: center;
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: none;
+            border-left: 4px solid #c62828;
+        }
+
+        .examples {
+            background: #f0f7ff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .examples h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .example-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .example-btn {
+            padding: 8px 12px;
+            background: white;
+            border: 1px solid #667eea;
+            border-radius: 20px;
+            color: #667eea;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .example-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .model-info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-value {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .info-label {
+            font-size: 0.75em;
+            color: #999;
+            margin-top: 3px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .model-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="emoji-large">🧵</div>
+            <h1>Threads Sentiment</h1>
+            <p>Analyze the emotion in your text</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <div class="examples">
+            <h3>Try these examples:</h3>
+            <div class="example-buttons">
+                <button class="example-btn" onclick="loadExample('I absolutely love this app! It changed my life.')">😊 Positive</button>
+                <button class="example-btn" onclick="loadExample('Terrible experience. The app keeps crashing and losing my data.')">😢 Negative</button>
+                <button class="example-btn" onclick="loadExample('It is okay. Some features work well but there are some issues.')">😐 Neutral</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="reviewText">Enter your review or text:</label>
+            <textarea 
+                id="reviewText" 
+                placeholder="Write something about the Threads app or any other topic...">
+            </textarea>
+        </div>
+
+        <div class="button-group">
+            <button class="analyze-btn" id="analyzeBtn" onclick="analyzeText()">
+                Analyze Sentiment
+            </button>
+            <button class="clear-btn" onclick="clearText()">Clear</button>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Analyzing sentiment...</p>
+        </div>
+
+        <div class="result-container" id="resultContainer">
+            <div class="sentiment-result">
+                <div class="sentiment-emoji" id="sentimentEmoji"></div>
+                <div class="sentiment-label" id="sentimentLabel"></div>
+                <div class="confidence-score" id="confidenceScore"></div>
+            </div>
+
+            <div class="probabilities">
+                <div class="probability-bar positive">
+                    <div class="probability-label">
+                        <span>😊 Positive</span>
+                        <span id="probPositive">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="fillPositive" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="probability-bar negative">
+                    <div class="probability-label">
+                        <span>😢 Negative</span>
+                        <span id="probNegative">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="fillNegative" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="probability-bar neutral">
+                    <div class="probability-label">
+                        <span>😐 Neutral</span>
+                        <span id="probNeutral">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="fillNeutral" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cleaned-text">
+                <div class="cleaned-text-label">📝 Processed Text:</div>
+                <div id="cleanedTextContent"></div>
+            </div>
+        </div>
+
+        <div class="model-info">
+            <div class="info-item">
+                <div class="info-value">79%</div>
+                <div class="info-label">Model Accuracy</div>
+            </div>
+            <div class="info-item">
+                <div class="info-value">36,943</div>
+                <div class="info-label">Reviews Analyzed</div>
+            </div>
+            <div class="info-item">
+                <div class="info-value">5000</div>
+                <div class="info-label">Features</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🤖 Powered by Logistic Regression & TF-IDF | Threads Sentiment Analysis Project</p>
+        </div>
+    </div>
+
+    <script>
+        const reviewTextarea = document.getElementById('reviewText');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const loading = document.getElementById('loading');
+        const resultContainer = document.getElementById('resultContainer');
+        const errorMessage = document.getElementById('errorMessage');
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        function loadExample(text) {
+            reviewTextarea.value = text;
+            reviewTextarea.focus();
+        }
+
+        function clearText() {
+            reviewTextarea.value = '';
+            resultContainer.classList.remove('show');
+            errorMessage.style.display = 'none';
+            reviewTextarea.focus();
+        }
+
+        async function analyzeText() {
+            const text = reviewTextarea.value.trim();
+
+            if (!text) {
+                showError('Please enter some text to analyze.');
+                return;
+            }
+
+            analyzeBtn.disabled = true;
+            loading.style.display = 'block';
+            resultContainer.classList.remove('show');
+            errorMessage.style.display = 'none';
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text: text })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    showError(data.error || 'An error occurred');
+                    loading.style.display = 'none';
+                    analyzeBtn.disabled = false;
+                    return;
+                }
+
+                displayResults(data);
+            } catch (error) {
+                showError('Connection error. Make sure the server is running.');
+                console.error('Error:', error);
+            } finally {
+                loading.style.display = 'none';
+                analyzeBtn.disabled = false;
+            }
+        }
+
+        function displayResults(data) {
+            const sentimentEmoji = document.getElementById('sentimentEmoji');
+            const sentimentLabel = document.getElementById('sentimentLabel');
+            const confidenceScore = document.getElementById('confidenceScore');
+
+            sentimentEmoji.textContent = data.emoji;
+            sentimentLabel.textContent = data.sentiment.toUpperCase();
+            sentimentLabel.style.color = data.color;
+            confidenceScore.textContent = `${data.confidence}% Confidence`;
+
+            // Update probability bars
+            document.getElementById('probPositive').textContent = data.probabilities.positive.toFixed(1) + '%';
+            document.getElementById('probNegative').textContent = data.probabilities.negative.toFixed(1) + '%';
+            document.getElementById('probNeutral').textContent = data.probabilities.neutral.toFixed(1) + '%';
+
+            document.getElementById('fillPositive').style.width = data.probabilities.positive + '%';
+            document.getElementById('fillNegative').style.width = data.probabilities.negative + '%';
+            document.getElementById('fillNeutral').style.width = data.probabilities.neutral + '%';
+
+            // Display cleaned text
+            document.getElementById('cleanedTextContent').textContent = data.cleaned_text;
+
+            resultContainer.classList.add('show');
+        }
+
+        // Allow Enter+Ctrl to analyze
+        reviewTextarea.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.key === 'Enter') {
+                analyzeText();
+            }
+        });
+    </script>
+</body>
+</html>
