@@ -1,0 +1,121 @@
+COMP1073: Introduction to Computer Science
+Spring 2026
+Assignment 2 – Data-Driven Media Group Project (25%)
+Presentation & Demonstration on Monday 27 April 2026
+Report Due before 23:59 on Friday 1 May 2026
+Assignment Guidelines
+How to Achieve Maximum Marks in the Final Group Project
+This guide explains what strong projects look like and how to perform at an Excellent level.
+1. Start with a Strong Problem
+High-mark projects:
+• Choose a real, relevant media problem
+• Clearly define the target audience
+• Explain why the problem matters
+• Clearly justify why computing and AI are needed
+Avoid:
+• Vague problems like “improve social media”
+• Generic AI ideas with no clear purpose
+• Solutions that do not require data
+Tip:
+If you remove the data and AI and the idea still works, your problem is too weak.
+2. Design the System Before Building Anything
+High-mark projects:
+• Draw a clear system architecture diagram
+• Show inputs, processing, outputs
+• Explain algorithm logic step by step
+• Explain how users interact with the system
+Strong groups clearly explain:
+• What data enters the system
+• What happens to the data
+• What the AI does with it
+• What the final output looks like
+Tip:
+Think like an engineer, not just a designer.
+3. Take Data Seriously
+To score highly in the Data criterion:
+• Use a structured dataset with at least 100 records
+• Clearly describe where the data came from
+• Clean and preprocess the data
+• Explain what you removed, changed, or transformed
+High-mark groups:
+• Show screenshots or code snippets of cleaning steps
+• Explain why preprocessing is necessary
+• Connect analysis results to system design
+Avoid:
+• Using raw data without explanation
+• Including charts with no interpretation
+4. Produce Meaningful Analysis
+Minimum requirements:
+• At least 3 visualisations
+• At least 2 data-driven insights
+To get maximum marks:
+• Ensure visualisations are clearly labelled
+• Explain what each graph shows• Extract insights that influence your AI system
+Example of strong insight:
+“Data shows that posts containing emotional keywords receive 40 percent higher engagement.
+Therefore, our AI content generator prioritises emotionally expressive language.”
+Avoid:
+• Describing the graph instead of analysing it
+• Presenting obvious or superficial insights
+5. Integrate AI Properly
+High-mark AI integration:
+• Is central to the solution
+• Uses analysed data
+• Produces meaningful output
+• Is clearly explained conceptually
+Students must explain:
+• What type of AI is used
+• What inputs it takes
+• What outputs it produces
+• Its limitations
+• Potential bias or risks
+Avoid:
+• Just embedding ChatGPT in a mockup
+• Saying “we used AI” without explanation
+• Not understanding how the AI works
+If you cannot explain your AI clearly during Q and A, marks will drop.
+6. Build a Prototype That Demonstrates Logic
+High-mark prototypes:
+• Actually demonstrate system logic
+• Show data flowing through the system
+• Show AI output
+• Show user interaction
+The prototype does not need to be advanced, but it must:
+• Work logically
+• Reflect your system design
+Avoid:
+• Static slides pretending to be an app
+• Screenshots without functionality
+• No live demonstration
+7. Write Like a UCA Student
+Your report should:
+• Be structured clearly
+• Explain technical ideas logically
+• Connect directly to COMP1073 concepts
+• Include diagrams
+• Include data analysis clearly
+Strong reports:
+• Explain algorithms in simple structured language
+• Explain AI conceptually
+• Discuss ethical risks like bias and privacy
+• Reflect critically on limitations
+Avoid:
+• Overly descriptive writing with no technical explanation
+• Copying definitions from the internet
+• Ignoring ethical implications
+8. Prepare for Q and A
+To secure high marks:
+• Every member must understand the project
+• Be ready to explain data cleaning
+• Be ready to explain AI logic
+• Be ready to justify design decisions
+If one member cannot explain core components, marks may be affected.
+Final Advice for Maximum Marks
+To score in the Excellent range:
+• Choose a meaningful problem
+• Design before building
+• Analyse data deeply
+• Integrate AI properly
+• Demonstrate understanding
+• Reflect critically
+The strongest projects are those that show both conceptual understanding and technical application.
