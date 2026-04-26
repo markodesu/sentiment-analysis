@@ -89,15 +89,15 @@
 ## Slide 6: AI Model Architecture
 
 ### Speech:
-"At the heart of our system is a machine learning model trained on 36,943 reviews. We use TF-IDF vectorization to convert text into numerical features, then train a logistic regression classifier. The model achieves 79% accuracy in classifying reviews as positive, negative, or neutral. This is the same technology used by companies like Netflix and Amazon for recommendation systems."
+"At the heart of our system is a machine learning pipeline built from real product reviews. We start by cleaning and vectorizing text, then train a logistic regression classifier on TF-IDF features. The same pipeline also produces a trend forecast by aggregating daily sentiment and fitting a linear regression model, giving us both classification and next-day sentiment prediction."
 
 ### Bullet Points:
-- **Text Vectorization:** TF-IDF transforms text into 5,000 numerical features
-- **Algorithm:** Logistic Regression (proven, interpretable)
-- **Training Data:** 80% of reviews (29,554 samples)
-- **Testing Data:** 20% of reviews (7,389 samples)
-- **Performance:** 79% accuracy, 63% precision for neutral class
-- **Model Size:** 2.1 MB (efficient for deployment)
+- **Text Vectorization:** TF-IDF transforms cleaned reviews into 5,000 numerical features
+- **Algorithm:** Logistic Regression for sentiment classification
+- **Trend Forecasting:** Linear regression on daily average sentiment
+- **Training Data:** 80% of reviews (~29,554 samples)
+- **Testing Data:** 20% of reviews (~7,389 samples)
+- **Performance:** 79% accuracy, with saved model artifacts for deployment
 
 ---
 

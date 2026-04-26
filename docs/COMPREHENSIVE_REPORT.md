@@ -352,43 +352,50 @@ prediction = model.predict(next_day)
 ### How All Components Work Together
 
 ```
-Raw Data (36,943 reviews)
+Raw Data (37,000+ review records)
         |
         v
     [Data Loader]
-    - Remove unnecessary columns
-    - Handle missing values
-    - Combine text fields
+    - Load CSV from data/37000_reviews_of_thread_app.csv
+    - Drop irrelevant columns and fill missing values
+    - Combine title + description into a single text field
+    - Parse dates and rename columns for consistency
         |
         v
     [Text Preprocessor]
-    - Normalize case
+    - Lowercase text
     - Remove URLs
-    - Remove special characters
+    - Strip non-alphabetic characters
         |
         v
-    [Vectorizer] 
-    - Convert text to TF-IDF features
-    - Create numerical representation
+    [TF-IDF Vectorizer]
+    - Convert cleaned text into numerical features
+    - Use 5,000 max features and English stop words
         |
         v
-    [ML Model]
-    - Logistic Regression classifier
-    - Predicts: positive, negative, neutral
+    [Sentiment Model]
+    - Train Logistic Regression on labeled sentiment
+    - Evaluate on 20% test split (≈7,389 samples)
+    - Save model and vectorizer artifacts in outputs/
+        |
+        v
+    [Sentiment Inference]
+    - Predict positive/neutral/negative labels
+    - Map labels to numeric scores for trend analysis
         |
         v
     [Trend Analyzer]
-    - Aggregates sentiment by day
-    - Fits linear regression
+    - Compute daily average sentiment score
+    - Fit linear regression to forecast next day
         |
         v
     [Output]
-    - Daily sentiment plot
-    - Next-day prediction
-    - Classification metrics
+    - Sentiment trend plot (outputs/sentiment_trend.png)
+    - Next-day sentiment prediction
+    - Trained model artifacts for reuse
 ```
 
-Each component serves a specific purpose. Data flows from one step to the next, with each stage adding intelligence to the raw data.
+Each component serves a specific purpose. Data flows from one stage to the next, with the model generating both classification labels and a forecasted sentiment trend.
 
 ---
 
