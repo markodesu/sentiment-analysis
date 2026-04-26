@@ -88,8 +88,29 @@ This notebook provides a step-by-step walkthrough of:
 
 ```
 sentiment-trend-project/
+├── app.py
+├── Dockerfile
+├── Procfile
+├── README.md
+├── requirements.txt
+├── runtime.txt
+├── .env.example
+├── .dockerignore
 ├── data/
 │   └── 37000_reviews_of_thread_app.csv
+├── docs/
+│   ├── COMPREHENSIVE_REPORT.md
+│   ├── DEPLOYMENT_GUIDE.md
+│   ├── PRESENTATION_SLIDES.md
+│   ├── SRS.md
+│   ├── Task_Distribution.md
+│   └── AI reqs
+├── notebooks/
+│   └── analysis.ipynb
+├── outputs/
+│   ├── sentiment_model.pkl
+│   ├── vectorizer.pkl
+│   └── sentiment_trend.png
 ├── src/
 │   ├── main.py
 │   ├── data_loader.py
@@ -98,15 +119,5 @@ sentiment-trend-project/
 │   └── trend.py
 ├── templates/
 │   └── index.html
-├── notebooks/
-│   └── analysis.ipynb
-├── outputs/
-│   ├── sentiment_model.pkl
-│   ├── vectorizer.pkl
-│   └── sentiment_trend.png
-├── app.py
-├── requirements.txt
-├── SRS.md
-├── Task_Distribution.md
-└── COMPREHENSIVE_REPORT.md
+└── README.md
 ```
